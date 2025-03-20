@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
+import { useFonts, MavenPro_600SemiBold } from "@expo-google-fonts/maven-pro";
+import GradientText from "./components/GradientText.js";
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    MavenPro_600SemiBold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={{ backgroundColor: "#1B1C25", flex: 1 }}>
       <StatusBar style="auto" />
-    </View>
+      <GradientText style={styles.logotext}>WeBuyIt</GradientText>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  logotext: {
+    fontFamily: "MavenPro_600SemiBold",
+    fontSize: 40,
+    letterSpacing: 6,
   },
 });
