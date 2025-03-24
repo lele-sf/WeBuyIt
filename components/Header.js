@@ -2,7 +2,7 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import GradientText from "./GradientText.js";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Header = () => {
+function Header () {
   return (
     <View style={styles.header}>
       <GradientText style={styles.logotext}>WeBuyIt</GradientText>
