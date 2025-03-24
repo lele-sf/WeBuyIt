@@ -1,10 +1,12 @@
 import React from "react";
 import { SafeAreaView, TouchableOpacity, Text, StyleSheet, StatusBar } from "react-native";
+import SearchBar from "../components/SearchBar.js";
 
 function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
+      <SearchBar />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Detail")}
@@ -20,7 +22,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B1C25",
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
+    paddingHorizontal: 20,
   },
   button: {
     backgroundColor: "#4CAF50",

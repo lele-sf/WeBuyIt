@@ -5,7 +5,7 @@ import Header from "./components/Header.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import DetailScreen from "./screens/DetailScreen.js";
 
-const Stack = createNativeStackNavigator(); // gerencia a navegação entre telas, ex: a Home esta no topo, se vc navegar para Detail, ela vai por cima da Home
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const fontsLoaded = useCustomFonts();
@@ -15,18 +15,18 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer> {/* envolve toda a a aplicação, tipo o "root" da navegação */}
-      <Stack.Navigator // define quais telas estarão dentro da navegação e suas opções 
+    <NavigationContainer>
+      <Stack.Navigator
         screenOptions={{
           headerStyle: { backgroundColor: "#1B1C25" },
           headerTintColor: "#fff",
         }}
       >
-        <Stack.Screen // representa uma tela dentro do navegador
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{
-            headerTitle: () => <Header />, // forma de passar um componente customizado para o header
+            headerTitle: () => <Header />,
           }}
         />
         <Stack.Screen
