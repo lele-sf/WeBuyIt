@@ -7,7 +7,7 @@ function Header () {
     <View style={styles.header}>
       <GradientText style={styles.logotext}>WeBuyIt</GradientText>
       <TouchableOpacity onPress={() => console.log("menu pressionado")}>
-        <Ionicons name="ellipsis-horizontal-circle" size={40} color="#5DCFAE" />
+      <GradientText><Ionicons name="ellipsis-horizontal-circle" size={40}/></GradientText>
       </TouchableOpacity>
     </View>
   );
@@ -18,9 +18,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
+    width: "100%",
+  },  
   logotext: {
     fontFamily: "MavenPro_600SemiBold",
     fontSize: 32,
