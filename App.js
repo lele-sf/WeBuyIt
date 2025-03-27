@@ -5,6 +5,7 @@ import Header from "./components/Header.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import DetailScreen from "./screens/DetailScreen.js";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
