@@ -2,7 +2,7 @@ import { Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
 
-const GradientText = (props) => {
+const Gradient = (props) => {
   return (
     <MaskedView maskElement={<Text {...props} />}>
       <LinearGradient
@@ -16,4 +16,4 @@ const GradientText = (props) => {
   );
 };
 
-export default GradientText;
+export default Gradient;

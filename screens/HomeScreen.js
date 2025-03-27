@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, TouchableOpacity, Text, StyleSheet, StatusBar, View, } from "react-native";
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  StatusBar,
+  View,
+} from "react-native";
 import SearchBar from "../components/SearchBar.js";
-import { getLists } from "../database/FirebaseTestQuery.js";
-import Box from "../components/Box.js";
-import Feather from '@expo/vector-icons/Feather';
-import GradientText from "../components/GradientText.js";
+// import { getLists } from "../database/FirebaseTestQuery.js";
+import Box from "../components/CategoryBox.js";
+import Feather from "@expo/vector-icons/Feather";
+import Gradient from "../components/Gradient.js";
 import { MavenPro_600SemiBold } from "@expo-google-fonts/maven-pro";
+import CategoriesSection from "../components/CategoriesSection.js";
 
 const formatTimestamp = (timestamp) => {
   if (timestamp && timestamp.seconds) {
@@ -36,14 +44,15 @@ function HomeScreen({ navigation }) {
       >
         <Text style={styles.buttonText}>Ir para Detalhes</Text>
       </TouchableOpacity>
-      <Box>
+      <CategoriesSection />
+      {/* <Box>
         <Text style={{fontFamily: "MavenPro_600SemiBold", fontSize: 50, color: '#fff'}}>03</Text>
-        <GradientText>
+        <Gradient>
           <Feather name="archive" size={24} />
           <Text>Arquivadas</Text>
-        </GradientText>
-        {/* <Ionicons name="archive" size={25}/> */}
-      </Box>
+        </Gradient>
+        {/* <Ionicons name="archive" size={25}/> 
+        </Box> */}
       {/* <View>
         <Text>Lista de Itens:</Text>
         {items.length > 0 ? (
