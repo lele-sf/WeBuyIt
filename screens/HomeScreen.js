@@ -14,6 +14,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Gradient from "../components/Gradient.js";
 import { MavenPro_600SemiBold } from "@expo-google-fonts/maven-pro";
 import CategoriesSection from "../components/CategoriesSection.js";
+import ListContainer from "../components/ListContainer.js";
 
 const formatTimestamp = (timestamp) => {
   if (timestamp && timestamp.seconds) {
@@ -45,6 +46,7 @@ function HomeScreen({ navigation }) {
         <Text style={styles.buttonText}>Ir para Detalhes</Text>
       </TouchableOpacity>
       <CategoriesSection />
+      <ListContainer />
       {/* <Box>
         <Text style={{fontFamily: "MavenPro_600SemiBold", fontSize: 50, color: '#fff'}}>03</Text>
         <Gradient>
