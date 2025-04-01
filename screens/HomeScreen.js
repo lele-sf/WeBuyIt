@@ -42,7 +42,7 @@ function HomeScreen() {
         <SearchBar />
       </View>
       <CategoriesSection />
-        <ListContainer  />
+      <ListContainer />
       {/* <View>
         <Text>Lista de Itens:</Text>
         {items.length > 0 ? (
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#1B1C25",
     flex: 1,
-    paddingHorizontal: 20,
   },
   searchBarContainer: {
     justifyContent: "center",
