@@ -1,12 +1,17 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Gradient from "./Gradient";
 
 function CategoryBox({ title, count, iconName }) {
   return (
     <TouchableOpacity style={styles.box}>
       <Text style={styles.count}>{count}</Text>
-      <Ionicons name={iconName} size={24} color="#fff" />
-      <Text style={styles.title}>{title}</Text>
+      <Gradient>
+        <Ionicons name={iconName} size={24}/>
+      </Gradient>
+      <Gradient>
+        <Text style={styles.title}>{title}</Text>
+      </Gradient>
     </TouchableOpacity>
   );
 }
@@ -15,7 +20,7 @@ const styles = StyleSheet.create({
   box: {
     width: 110,
     height: 110,
-    backgroundColor: "rgba(192, 189, 189, 0.2)",
+    backgroundColor: "#262834",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -28,9 +33,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   count: {
-    fontFamily: "MavenPro_600SemiBold",
-    color: "#fff",
-    fontSize: 14,
+    fontFamily: "MavenPro_500Medium",
+    color: "#E5E5E5",
+    fontSize: 30,
     marginBottom: 5,
   },
 });
