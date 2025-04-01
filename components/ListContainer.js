@@ -1,5 +1,5 @@
 import Gradient from "./Gradient";
-import ListItem from "./listItem";
+import ListItem from "./ListItem";
 import { StyleSheet, View, Text } from "react-native";
 
 const items = [

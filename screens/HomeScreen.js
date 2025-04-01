@@ -23,7 +23,7 @@ const formatTimestamp = (timestamp) => {
   return "Data não disponível";
 };
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -38,23 +38,11 @@ function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <SearchBar />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("Detail")}
-      >
-        <Text style={styles.buttonText}>Ir para Detalhes</Text>
-      </TouchableOpacity>
+      <View style={styles.searchBarContainer}>
+        <SearchBar />
+      </View>
       <CategoriesSection />
-      <ListContainer />
-      {/* <Box>
-        <Text style={{fontFamily: "MavenPro_600SemiBold", fontSize: 50, color: '#fff'}}>03</Text>
-        <Gradient>
-          <Feather name="archive" size={24} />
-          <Text>Arquivadas</Text>
-        </Gradient>
-        {/* <Ionicons name="archive" size={25}/> 
-        </Box> */}
+        <ListContainer  />
       {/* <View>
         <Text>Lista de Itens:</Text>
         {items.length > 0 ? (
@@ -67,9 +55,7 @@ function HomeScreen({ navigation }) {
               <Text>---------------------------</Text>
             </View>
           ))
-        ) : (
-          <Text>Nenhum item encontrado.</Text>
-        )}
+        ))}
       </View> */}
     </SafeAreaView>
   );
@@ -79,20 +65,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#1B1C25",
     flex: 1,
-    alignItems: "center",
-    // justifyContent: "center",
-    // paddingHorizontal: 20,
-  },
-  button: {
-    backgroundColor: "#4CAF50",
-    paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 8,
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
+  searchBarContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   whitetext: {
     color: "#fff",

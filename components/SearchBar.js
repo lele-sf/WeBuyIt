@@ -88,11 +88,11 @@ function SearchBar() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#262834",
-    width: "80%",
+    width: "90%",
     height: 40,
     paddingHorizontal: 10,
     borderRadius: 8,
-    margin: 20,
+    marginVertical: 20,
     flexDirection: "row",
     alignItems: "center",
   },
