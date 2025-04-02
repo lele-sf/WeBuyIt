@@ -11,7 +11,7 @@ const items = [
 function ListContainer() {
     return (
         <View>
-        <Gradient><Text style={styles.title}>Minha listas</Text></Gradient>
+            <Gradient style={{margin: 20,}}><Text style={styles.title}>Minhas listas</Text></Gradient>
             <View style={styles.container}>
                 {items.map((item, index) => (
                     <ListItem key={index} title={item.title} iconName={item.iconName} />
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#262834",
         borderRadius: 15,
-        
+        marginHorizontal: 20,
     },
     title: {
         fontFamily: "MavenPro_500Medium",

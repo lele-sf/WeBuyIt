@@ -88,7 +88,7 @@ function SearchBar() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#262834",
-    width: "90%",
+    width: "85%",
     height: 40,
     paddingHorizontal: 10,
     borderRadius: 8,
