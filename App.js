@@ -5,6 +5,7 @@ import Header from "./components/Header.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import DetailScreen from "./screens/DetailScreen.js";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         screenOptions={{
           headerStyle: { backgroundColor: "#1B1C25" },
           headerTintColor: "#fff",
+          headerShadowVisible: false,
         }}
       >
         <Stack.Screen

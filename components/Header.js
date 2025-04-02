@@ -1,25 +1,26 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import GradientText from "./GradientText.js";
+import Gradient from "./Gradient.js";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-function Header () {
+function Header() {
   return (
     <View style={styles.header}>
-      <GradientText style={styles.logotext}>WeBuyIt</GradientText>
+      <Gradient style={styles.logotext}>WeBuyIt</Gradient>
       <TouchableOpacity onPress={() => console.log("menu pressionado")}>
-        <Ionicons name="ellipsis-horizontal-circle" size={40} color="#5DCFAE" />
+        <Gradient>
+          <Ionicons name="ellipsis-horizontal-circle" size={40} />
+        </Gradient>
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    width: "100%",
   },
   logotext: {
     fontFamily: "MavenPro_600SemiBold",

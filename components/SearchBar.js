@@ -7,6 +7,7 @@ import {
   Text,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Gradient from "./Gradient";
 
 const API_URL = "https://jsonplaceholder.typicode.com/posts";
 
@@ -37,7 +38,7 @@ function SearchBar() {
 
   function handleSearch(query) {
     setSearch(query);
-    const filteredData = fullData.filter(item =>
+    const filteredData = fullData.filter((item) =>
       item.title.toLowerCase().includes(query.toLowerCase())
     );
     setData(filteredData);
@@ -61,9 +62,19 @@ function SearchBar() {
 
   return (
     <View style={styles.container}>
-      <Ionicons name="search" size={20} color="#000" />
+      <Gradient>
+        <Ionicons name="search" size={25} />
+      </Gradient>
       <TextInput
         placeholder="Buscar"
+        placeholderTextColor={"#C8C8C8"}
+        style={{
+          color: "#fff",
+          flex: 1,
+          marginLeft: 10,
+          fontFamily: "MavenPro_400Regular",
+          fontSize: 16,
+        }}
         clearButtonMode="always"
         autoCapitalize="none"
         autoCorrect={false}
@@ -76,11 +87,12 @@ function SearchBar() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    width: "90%",
+    backgroundColor: "#262834",
+    width: "85%",
+    height: 40,
     paddingHorizontal: 10,
     borderRadius: 8,
-    margin: 20,
+    marginVertical: 20,
     flexDirection: "row",
     alignItems: "center",
   },
