@@ -1,9 +1,9 @@
 import { SafeAreaView, Text, StyleSheet } from "react-native";
 
-function DetailScreen() {
+function ListScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Tela de Detalhes</Text>
+      <Text style={styles.text}>lista</Text>
     </SafeAreaView>
   );
 }
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailScreen;
+export default ListScreen;

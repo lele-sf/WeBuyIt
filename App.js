@@ -1,10 +1,11 @@
 import useCustomFonts from "./hooks/useFonts.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Header from "./components/Header.js";
-import HomeScreen from "./screens/HomeScreen.js";
-import DetailScreen from "./screens/DetailScreen.js";
 
+import Header from "./components/Header.js";
+import HeaderList from "./components/HeaderList.js";
+import HomeScreen from "./screens/HomeScreen.js";
+import ListScreen from "./screens/ListScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: { backgroundColor: "#1B1C25" },
-          headerTintColor: "#fff",
+          headerTintColor: "#5DCFAE",
           headerShadowVisible: false,
         }}
       >
@@ -32,9 +33,12 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="Detail"
-          component={DetailScreen}
-          options={{ title: "Detalhes",  headerTitleAlign: "center" }}
+          name="List"
+          component={ListScreen}
+          options={{
+            title: "",
+            headerRight: () => <HeaderList />,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
