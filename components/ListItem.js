@@ -2,14 +2,13 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Gradient from "./Gradient";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 
 function ListItem({ title, iconName }) {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate("Detail")}
+      onPress={() => navigation.navigate("List")}
     >
       <Gradient>
         <Ionicons name={iconName} size={24} />
