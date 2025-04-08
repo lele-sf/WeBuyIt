@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import SearchBar from "../components/SearchBar.js";
 // import { getLists } from "../database/FirebaseTestQuery.js";
+import FloatingButton from "../components/FloatingButton.js";
 import Box from "../components/CategoryBox.js";
 import Feather from "@expo/vector-icons/Feather";
 import Gradient from "../components/Gradient.js";
@@ -43,6 +44,7 @@ function HomeScreen() {
       </View>
       <CategoriesSection />
       <ListContainer />
+      <FloatingButton/>
       {/* <View>
         <Text>Lista de Itens:</Text>
         {items.length > 0 ? (
