@@ -2,7 +2,7 @@ import { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { FlatList, Text, StyleSheet, View } from "react-native";
 
-function ListContent({ data }) {
+function ListDetails({ data }) {
   const [checkedItems, setCheckedItems] = useState({});
 
   const toggleCheckbox = (id) => {
@@ -18,26 +18,26 @@ function ListContent({ data }) {
         style={styles.checkbox}
         value={checkedItems[item.id] || false}
         onValueChange={() => toggleCheckbox(item.id)}
-        color={checkedItems[item.id] ? "#5DCFAE" : undefined} 
+        color={checkedItems[item.id] ? "#5DCFAE" : undefined}
       />
       <Text style={styles.itemText}>{item.title}</Text>
     </View>
   );
 
   return (
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        contentContainerStyle={styles.listContainer}
-      />
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={renderItem}
+      contentContainerStyle={styles.listContainer}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-listContainer: {
-      marginHorizontal: 20,
-    padding: 20,
+  listContainer: {
+    marginHorizontal: 10,
+    marginVertical: 20,
   },
   item: {
     flexDirection: "row",
@@ -46,11 +46,15 @@ listContainer: {
   },
   checkbox: {
     marginHorizontal: 8,
+    borderRadius: 100,
+    width: 24,
+    height: 24,
   },
   itemText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: "MavenPro_400Regular",
   },
 });
 
-export default ListContent;
+export default ListDetails;

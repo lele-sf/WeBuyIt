@@ -15,7 +15,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Gradient from "../components/Gradient.js";
 import { MavenPro_600SemiBold } from "@expo-google-fonts/maven-pro";
 import CategoriesSection from "../components/CategoriesSection.js";
-import ListContainer from "../components/ListContainer.js";
+import ListOverview from "../components/ListOverview.js";
 
 const formatTimestamp = (timestamp) => {
   if (timestamp && timestamp.seconds) {
@@ -43,7 +43,7 @@ function HomeScreen() {
         <SearchBar />
       </View>
       <CategoriesSection />
-      <ListContainer />
+      <ListOverview />
       <FloatingButton/>
       {/* <View>
         <Text>Lista de Itens:</Text>

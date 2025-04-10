@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Header from "./components/Header.js";
 import HeaderList from "./components/HeaderList.js";
 import HomeScreen from "./screens/HomeScreen.js";
-import ListScreen from "./screens/ListScreen.js";
+import ListScreen from "./screens/ListDetailsScreen.js";
 
 const Stack = createNativeStackNavigator();
 
