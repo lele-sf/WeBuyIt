@@ -8,14 +8,10 @@ import {
   View,
 } from "react-native";
 import SearchBar from "../components/SearchBar.js";
-// import { getLists } from "../database/FirebaseTestQuery.js";
 import FloatingButton from "../components/FloatingButton.js";
-import Box from "../components/CategoryBox.js";
-import Feather from "@expo/vector-icons/Feather";
-import Gradient from "../components/Gradient.js";
-import { MavenPro_600SemiBold } from "@expo-google-fonts/maven-pro";
 import CategoriesSection from "../components/CategoriesSection.js";
-import ListContainer from "../components/ListContainer.js";
+import ListContainer from "../components/ListContainer.js"
+import { getLists } from "../database/getLists.js";;
 
 const formatTimestamp = (timestamp) => {
   if (timestamp && timestamp.seconds) {
@@ -25,12 +21,12 @@ const formatTimestamp = (timestamp) => {
 };
 
 function HomeScreen() {
-  const [items, setItems] = useState([]);
+  const [lists, setLists] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getLists();
-      setItems(data);
+      setLists(data);
     };
 
     fetchData();
@@ -43,22 +39,8 @@ function HomeScreen() {
         <SearchBar />
       </View>
       <CategoriesSection />
-      <ListContainer />
+      <ListContainer lists={lists} />
       <FloatingButton/>
-      {/* <View>
-        <Text>Lista de Itens:</Text>
-        {items.length > 0 ? (
-          items.map((item) => (
-            <View key={item.id}>
-              <Text style={styles.whitetext}>🛒 Nome: {item.ITEM_NAME}</Text>
-              <Text style={styles.whitetext}>✅ Checado: {item.ITEM_CHECKED ? "Sim" : "Não"}</Text>
-              <Text style={styles.whitetext}>⏰ Data: {formatTimestamp(item.ITEM_TIME_MODIFIED)}</Text>
-              <Text style={styles.whitetext}>📦 Unidade: {item.ITEM_UNITY}</Text>
-              <Text>---------------------------</Text>
-            </View>
-          ))
-        ))}
-      </View> */}
     </SafeAreaView>
   );
 }
