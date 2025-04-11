@@ -8,14 +8,14 @@ const items = [
   { title: "Encontro", iconName: "wine-outline" },
 ];
 
-function ListOverview() {
+function ListOverview({ lists = [] }) {
   return (
     <View>
       <Gradient style={{ margin: 20 }}>
         <Text style={styles.title}>Minhas listas</Text>
       </Gradient>
       <View style={styles.container}>
-        {items.map((item, index) => (
+        {lists.map((item, index) => (
           <ListPreviewItem key={index} title={item.title} iconName={item.iconName} />
         ))}
       </View>
