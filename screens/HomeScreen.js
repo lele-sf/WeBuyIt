@@ -10,8 +10,7 @@ import {
 import SearchBar from "../components/SearchBar.js";
 import FloatingButton from "../components/FloatingButton.js";
 import CategoriesSection from "../components/CategoriesSection.js";
-import ListContainer from "../components/ListContainer.js"
-import { getLists } from "../database/getLists.js";;
+import ListOverview from "../components/ListOverview.js";
 
 const formatTimestamp = (timestamp) => {
   if (timestamp && timestamp.seconds) {
@@ -39,7 +38,7 @@ function HomeScreen() {
         <SearchBar />
       </View>
       <CategoriesSection />
-      <ListContainer lists={lists} />
+      <ListOverview />
       <FloatingButton/>
     </SafeAreaView>
   );

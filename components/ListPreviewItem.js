@@ -3,12 +3,12 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Gradient from "./Gradient";
 import { useNavigation } from "@react-navigation/native";
 
-function ListItem({ title, iconName }) {
+function ListPreviewItem({ title, iconName }) {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate("List")}
+      onPress={() => navigation.navigate("List", { title })}
     >
       <Gradient>
         <Ionicons name={iconName} size={24} />
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default ListPreviewItem;

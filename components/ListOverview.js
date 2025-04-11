@@ -1,8 +1,14 @@
 import Gradient from "./Gradient";
-import ListItem from "./ListItem";
+import ListPreviewItem from "./ListPreviewItem";
 import { StyleSheet, View, Text } from "react-native";
 
-function ListContainer({ lists = [] }) {
+const items = [
+  { title: "Mercado", iconName: "cart-outline" },
+  { title: "Aniversário", iconName: "gift-outline" },
+  { title: "Encontro", iconName: "wine-outline" },
+];
+
+function ListOverview({ lists = [] }) {
   return (
     <View>
       <Gradient style={{ margin: 20 }}>
@@ -10,11 +16,7 @@ function ListContainer({ lists = [] }) {
       </Gradient>
       <View style={styles.container}>
         {lists.map((item, index) => (
-          <ListItem
-            key={index}
-            title={item.id}
-            iconName="list-outline"
-          />
+          <ListPreviewItem key={index} title={item.title} iconName={item.iconName} />
         ))}
       </View>
     </View>
@@ -33,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListContainer;
+export default ListOverview;
