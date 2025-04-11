@@ -11,13 +11,7 @@ import SearchBar from "../components/SearchBar.js";
 import FloatingButton from "../components/FloatingButton.js";
 import CategoriesSection from "../components/CategoriesSection.js";
 import ListOverview from "../components/ListOverview.js";
-
-const formatTimestamp = (timestamp) => {
-  if (timestamp && timestamp.seconds) {
-    return new Date(timestamp.seconds * 1000).toLocaleDateString();
-  }
-  return "Data não disponível";
-};
+import { getLists } from "../database/getLists.js";
 
 function HomeScreen() {
   const [lists, setLists] = useState([]);
@@ -38,7 +32,7 @@ function HomeScreen() {
         <SearchBar />
       </View>
       <CategoriesSection />
-      <ListOverview />
+      <ListOverview lists={lists}/>
       <FloatingButton/>
     </SafeAreaView>
   );
