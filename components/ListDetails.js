@@ -2,25 +2,38 @@ import { useState } from "react";
 import Checkbox from "expo-checkbox";
 import { FlatList, Text, StyleSheet, View } from "react-native";
 
-function ListDetails({ data }) {
-  const [checkedItems, setCheckedItems] = useState({});
+import { updateItem } from "../database/updateItem";
 
-  const toggleCheckbox = (id) => {
+function ListDetails({ data, listId }) {
+  const [checkedItems, setCheckedItems] = useState(
+    data.reduce((acc, item) => {
+      acc[item.id] = item.ITEM_CHECKED || false;
+      return acc;
+    }, {})
+  );
+
+  const toggleCheckbox = async (id) => {
+    const newValue = !checkedItems[id];
+    
     setCheckedItems((prev) => ({
       ...prev,
-      [id]: !prev[id],
+      [id]: newValue,
     }));
+
+    await updateItem(listId, id, { ITEM_CHECKED: newValue });
   };
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
       <Checkbox
         style={styles.checkbox}
-        value={checkedItems[item.id] || false}
+        value={checkedItems[item.id]}
         onValueChange={() => toggleCheckbox(item.id)}
         color={checkedItems[item.id] ? "#5DCFAE" : undefined}
       />
-      <Text style={styles.itemText}>{item.title}</Text>
+      <Text style={styles.itemText}>
+        {item.ITEM_NAME} - {item.ITEM_UNITY}
+      </Text>
     </View>
   );
 
