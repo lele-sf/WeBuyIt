@@ -10,7 +10,7 @@ function ListOverview({ lists = [] }) {
       </Gradient>
       <View style={styles.container}>
         {lists.map((item, index) => (
-          <ListPreviewItem key={index} title={item.id} iconName="list-outline" />
+          <ListPreviewItem key={index} title={item.id} iconName={item.icon} />
         ))}
       </View>
     </View>
