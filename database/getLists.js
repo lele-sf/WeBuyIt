@@ -9,7 +9,7 @@ export const getLists = async () => {
     const querySnapshot = await getDocs(listsCollection);
     const lists = querySnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data(),
+      icon: doc.data().Icon
     }));
     return lists;
   } catch (error) {
