@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import Constants from "expo-constants";
 
 console.log("🔍 ENV VARS (dentro do app):", Constants.expoConfig.extra);
@@ -12,5 +13,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-export { app };
+export { db };
