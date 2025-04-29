@@ -3,11 +3,11 @@ import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 import Gradient from "./Gradient";
 
-const FloatingButton = ({}) => {
+const FloatingButton = ({text, onPress}) => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Gradient>
-        <Text style={styles.buttonText}>Criar uma nova lista</Text>
+        <Text style={styles.buttonText}>{text}</Text>
       </Gradient>
     </TouchableOpacity>
   );

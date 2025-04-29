@@ -11,10 +11,12 @@ import SearchBar from "../components/SearchBar.js";
 import FloatingButton from "../components/FloatingButton.js";
 import CategoriesSection from "../components/CategoriesSection.js";
 import ListOverview from "../components/ListOverview.js";
+import NewListModal from "../components/newListModal.js";
 import { getLists } from "../database/getLists.js";
 
 function HomeScreen() {
   const [lists, setLists] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +35,8 @@ function HomeScreen() {
       </View>
       <CategoriesSection />
       <ListOverview lists={lists}/>
-      <FloatingButton/>
+      <FloatingButton text="Criar lista" onPress={() => setModalVisible(true)} />
+      <NewListModal visible={modalVisible} onClose={() => setModalVisible(false)} />
     </SafeAreaView>
   );
 }
