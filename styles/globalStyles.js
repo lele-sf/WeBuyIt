@@ -1,22 +1,27 @@
 import { StyleSheet } from "react-native";
 
-
-export const colors = {
+export const lightColors = {
+  primaryText: "#1E1E1E",
+  primaryBox: "#FFFFFF",
+  primaryBox_on_Focus: "#E0E0E0",
 };
 
-export const globalStyles = StyleSheet.create({
-    font: {
+export const darkColors = {
+  primaryText: "#E5E5E5",
+  primaryBox: "#262834",
+  primaryBox_on_Focus: "#383945",
+};
+
+export const getTheme = (isDarkMode) => {
+  const colors = isDarkMode ? darkColors : lightColors;
+
+  return {
+    colors,
+    styles: StyleSheet.create({
+      font: {
         fontFamily: "MavenPro_400Regular",
-    },
-});
-  // COLORS:
-  //
-  // principalText: {
-  //   color: '#E5E5E5',
-  // },
-  // principalBox: {
-  //   backgroundColor: '262834'
-  // },
-  // principalBox_on_Focus: {
-  //   backgroundColor: '383945'
-  // }
+        color: colors.primaryText,
+      },
+    }),
+  };
+};
