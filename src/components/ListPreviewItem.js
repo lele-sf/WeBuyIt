@@ -8,7 +8,6 @@ import {
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Gradient from "./Gradient";
 import { useNavigation, useTheme } from "@react-navigation/native";
-// import { getTheme } from "../styles/globalStyles";
 
 function ListPreviewItem({ title, iconName }) {
   const navigation = useNavigation();
