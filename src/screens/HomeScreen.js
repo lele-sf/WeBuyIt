@@ -12,9 +12,11 @@ import FloatingButton from "../components/FloatingButton.js";
 import CategoriesSection from "../components/CategoriesSection.js";
 import ListOverview from "../components/ListOverview.js";
 import { getLists } from "../database/getLists.js";
+import { useTheme } from "@react-navigation/native";
 
 function HomeScreen() {
   const [lists, setLists] = useState([]);
+  const { colors } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,29 +28,22 @@ function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar style="auto" />
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
       <CategoriesSection />
-      <ListOverview lists={lists}/>
-      <FloatingButton/>
+      <ListOverview lists={lists} />
+      <FloatingButton />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#1B1C25",
-    flex: 1,
-  },
   searchBarContainer: {
     justifyContent: "center",
     alignItems: "center",
-  },
-  whitetext: {
-    color: "#fff",
   },
 });
 

@@ -1,19 +1,27 @@
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+// ListPreviewItem.js
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  useColorScheme,
+} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Gradient from "./Gradient";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 
 function ListPreviewItem({ title, iconName }) {
   const navigation = useNavigation();
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, { backgroundColor: colors.card }]}
       onPress={() => navigation.navigate("List", { title })}
     >
       <Gradient>
         <Ionicons name={iconName} size={24} />
       </Gradient>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -25,10 +33,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontFamily: "MavenPro_400Regular",
     fontSize: 16,
     marginLeft: 10,
-    color: "#E5E5E5",
   },
 });
 

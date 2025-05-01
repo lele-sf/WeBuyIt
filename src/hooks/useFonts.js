@@ -2,9 +2,9 @@ import { useFonts, MavenPro_600SemiBold, MavenPro_400Regular, MavenPro_500Medium
 
 const useCustomFonts = () => {
   let [fontsLoaded] = useFonts({
-    MavenPro_600SemiBold,
-    MavenPro_400Regular,
-    MavenPro_500Medium
+    maven_regular: MavenPro_400Regular,
+    maven_medium: MavenPro_500Medium,
+    maven_semibold: MavenPro_600SemiBold,
   });
 
   return fontsLoaded;
