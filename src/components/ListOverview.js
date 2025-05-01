@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   title: {
-    fontFamily: "MavenPro_500Medium",
+    fontFamily: "maven_medium",
     fontSize: 24,
   },
 });

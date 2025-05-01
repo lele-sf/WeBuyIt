@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 30,
-    // elevation: 5,
   },
   buttonText: {
-    fontFamily: "MavenPro_500Medium",
+    fontFamily: "maven_medium",
     color: "#fff",
     fontWeight: "bold",
   },

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   logotext: {
-    fontFamily: "MavenPro_600SemiBold",
+    fontFamily: "maven_semibold",
     fontSize: 32,
     letterSpacing: 6,
   },

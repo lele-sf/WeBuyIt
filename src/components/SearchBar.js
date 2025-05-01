@@ -72,7 +72,7 @@ function SearchBar() {
           color: "#fff",
           flex: 1,
           marginLeft: 10,
-          fontFamily: "MavenPro_400Regular",
+          fontFamily: "maven_regular",
           fontSize: 16,
         }}
         clearButtonMode="always"

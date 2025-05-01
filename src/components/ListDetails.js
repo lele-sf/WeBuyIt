@@ -14,7 +14,7 @@ function ListDetails({ data, listId }) {
 
   const toggleCheckbox = async (id) => {
     const newValue = !checkedItems[id];
-    
+
     setCheckedItems((prev) => ({
       ...prev,
       [id]: newValue,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   itemText: {
     color: "#fff",
     fontSize: 20,
-    fontFamily: "MavenPro_400Regular",
+    fontFamily: "maven_regular",
   },
 });
 
