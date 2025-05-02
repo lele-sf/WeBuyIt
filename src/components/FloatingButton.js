@@ -1,13 +1,17 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import Gradient from "./Gradient";
 
 const FloatingButton = ({}) => {
+  const { colors } = useTheme();
   return (
     <TouchableOpacity style={styles.button}>
       <Gradient>
-        <Text style={styles.buttonText}>Criar uma nova lista</Text>
+        <Text style={[styles.buttonText, { color: colors.text }]}>
+          Criar uma nova lista
+        </Text>
       </Gradient>
     </TouchableOpacity>
   );
@@ -23,9 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   buttonText: {
-    fontFamily: "maven_medium",
-    color: "#fff",
-    fontWeight: "bold",
+    fontFamily: "maven_semibold",
   },
 });
 

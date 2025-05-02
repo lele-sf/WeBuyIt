@@ -1,16 +1,23 @@
+import { StyleSheet, View, Text } from "react-native";
+import { useTheme } from "@react-navigation/native";
+
 import Gradient from "./Gradient";
 import ListPreviewItem from "./ListPreviewItem";
-import { StyleSheet, View, Text } from "react-native";
 
 function ListOverview({ lists = [] }) {
+  const { colors } = useTheme();
   return (
     <View>
       <Gradient style={{ margin: 20 }}>
         <Text style={styles.title}>Minhas listas</Text>
       </Gradient>
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: colors.card }]}>
         {lists.map((item, index) => (
-          <ListPreviewItem key={index} title={item.id} iconName="list-outline" />
+          <ListPreviewItem
+            key={index}
+            title={item.id}
+            iconName="list-outline"
+          />
         ))}
       </View>
     </View>
@@ -19,7 +26,6 @@ function ListOverview({ lists = [] }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#262834",
     borderRadius: 15,
     marginHorizontal: 20,
   },
