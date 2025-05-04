@@ -1,9 +1,9 @@
 export const LightColors = {
   // opções padrões de cores do react-navigation
     primary: "#5DCFAE",
-    background: "#efefef",
-    card: "#dddcdc",
-    text: "#333333",
+    background: "#F4F7F9",
+    card: "#FFFFFF",
+    text: "#1C1C1E",
     border: "#E0E0E0",
     notification: "#FF453A",
     // cores personalizadas
@@ -18,4 +18,3 @@ export const LightColors = {
     border: "#3E3E42",
     notification: "#FF453A",
   };
-  

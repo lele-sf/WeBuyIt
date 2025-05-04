@@ -1,10 +1,12 @@
 import { useState } from "react";
-import Checkbox from "expo-checkbox";
 import { FlatList, Text, StyleSheet, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import Checkbox from "expo-checkbox";
 
 import { updateItem } from "../database/updateItem";
 
 function ListDetails({ data, listId }) {
+  const { colors } = useTheme();
   const [checkedItems, setCheckedItems] = useState(
     data.reduce((acc, item) => {
       acc[item.id] = item.ITEM_CHECKED || false;
@@ -31,7 +33,7 @@ function ListDetails({ data, listId }) {
         onValueChange={() => toggleCheckbox(item.id)}
         color={checkedItems[item.id] ? "#5DCFAE" : undefined}
       />
-      <Text style={styles.itemText}>
+      <Text style={[styles.itemText, { color: colors.text }]}>
         {item.ITEM_NAME} - {item.ITEM_UNITY}
       </Text>
     </View>
@@ -64,7 +66,6 @@ const styles = StyleSheet.create({
     height: 24,
   },
   itemText: {
-    color: "#fff",
     fontSize: 20,
     fontFamily: "maven_regular",
   },

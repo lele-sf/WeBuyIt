@@ -1,13 +1,8 @@
-// ListPreviewItem.js
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  useColorScheme,
-} from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Gradient from "./Gradient";
 import { useNavigation, useTheme } from "@react-navigation/native";
+
+import Gradient from "./Gradient";
 
 function ListPreviewItem({ title, iconName }) {
   const navigation = useNavigation();
