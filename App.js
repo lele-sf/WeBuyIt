@@ -2,12 +2,12 @@ import { useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { LightThemeCustom, DarkThemeCustom } from "./src/styles/theme.js";
 import useCustomFonts from "./src/hooks/useFonts.js";
 import Header from "./src/components/Header.js";
 import HeaderList from "./src/components/HeaderList.js";
-import HomeScreen from "./src/screens/HomeScreen.js";
+import BottomTabs from "./src/components/BottomTabs.js";
 import ListScreen from "./src/screens/ListDetailsScreen.js";
-import { LightThemeCustom, DarkThemeCustom } from "./src/styles/theme.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,8 +38,8 @@ export default function App() {
         }}
       >
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Main"
+          component={BottomTabs}
           options={{
             headerTitle: () => <Header />,
           }}
