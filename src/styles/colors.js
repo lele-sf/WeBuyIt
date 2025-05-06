@@ -13,8 +13,8 @@ export const LightColors = {
   export const DarkColors = {
     primary: "#5DCFAE",
     background:"#1b1c25",
-    card: "#252A34",
-    text: "#FFFFFF",
+    card: "#262834",
+    text: "#E5E5E5",
     border: "#3E3E42",
     notification: "#FF453A",
   };
