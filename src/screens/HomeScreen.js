@@ -30,9 +30,6 @@ function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar style="auto" />
-      <View style={styles.searchBarContainer}>
-        <SearchBar />
-      </View>
       <CategoriesSection />
       <ListOverview lists={lists} />
       <FloatingButton />
