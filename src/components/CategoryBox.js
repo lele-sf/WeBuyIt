@@ -11,9 +11,6 @@ function CategoryBox({ title, count, iconName }) {
     <TouchableOpacity style={[styles.box, { backgroundColor: colors.card }]}>
       <Text style={[styles.count, { color: colors.text }]}>{count}</Text>
       <Gradient>
-        <Ionicons name={iconName} size={24} />
-      </Gradient>
-      <Gradient>
         <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
       </Gradient>
     </TouchableOpacity>
@@ -22,21 +19,23 @@ function CategoryBox({ title, count, iconName }) {
 
 const styles = StyleSheet.create({
   box: {
-    width: 110,
-    height: 110,
-    borderRadius: 10,
+    width: 100,
+    height: 100,
+    borderRadius: 6,
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 10,
   },
   title: {
     fontFamily: "maven_regular",
-    fontSize: 16,
+    textAlign: "center",
+    fontSize: 13,
     marginTop: 5,
   },
   count: {
     fontFamily: "maven_medium",
-    fontSize: 30,
+    letterSpacing: 5,
+    fontSize: 40,
     marginBottom: 5,
   },
 });

@@ -3,9 +3,9 @@ import { View, StyleSheet } from "react-native";
 import CategoryBox from "../components/CategoryBox";
 
 const categories = [
-  { title: "Arquivados", count: 5, iconName: "archive-outline" },
-  { title: "Favoritos", count: 8, iconName: "heart-outline" },
-  { title: "Outros", count: 3, iconName: "list-outline" },
+  { title: "Eventos chegando", count: '04'},
+  { title: "Aguardando confirmação", count: '02'},
+  { title: "Novas notificações", count: '03'},
 ];
 
 function CategoriesSection() {
