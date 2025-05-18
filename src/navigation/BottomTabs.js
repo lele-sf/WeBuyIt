@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import HomeScreen from "../screens/HomeScreen";
 import CalendarScreen from '../screens/CalendarScreen';
 import ChatScreen from '../screens/ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import HomeStack from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +37,7 @@ export default function BottomTabs() {
         headerShown: false,
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Calendario" component={CalendarScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
       <Tab.Screen name="Perfil" component={ProfileScreen} />

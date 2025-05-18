@@ -1,5 +1,5 @@
-import {View, StyleSheet, TouchableOpacity, TextInput, Animated, Easing} from "react-native";
-import { useRef, useState, useEffect } from "react";
+import { View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { useState } from "react";
 import Gradient from "./Gradient.js";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "@react-navigation/native";
@@ -11,8 +11,8 @@ function Header() {
 
   const toggleSearch = () => {
     if (isSearchActive) {
-        setIsSearchActive(false);
-        setSearchQuery("");
+      setIsSearchActive(false);
+      setSearchQuery("");
     } else {
       setIsSearchActive(true);
     }
@@ -37,11 +37,14 @@ function Header() {
             onChangeText={setSearchQuery}
             placeholder="Pesquisar"
             placeholderTextColor="#aaa"
-            style={[styles.input, {backgroundColor: colors.card, color: colors.text }]}
+            style={[
+              styles.input,
+              { backgroundColor: colors.card, color: colors.text },
+            ]}
           />
           <TouchableOpacity onPress={toggleSearch}>
             <Gradient>
-              <Ionicons name="close" size={30}/>
+              <Ionicons name="close" size={30} />
             </Gradient>
           </TouchableOpacity>
         </View>

@@ -1,7 +1,5 @@
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { app } from "./firebaseConfig";
-
-const db = getFirestore(app);
+import { db } from "./firebaseConfig";
 
 export const getItems = async (listId) => {
   try {
