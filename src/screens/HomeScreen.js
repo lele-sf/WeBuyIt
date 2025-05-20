@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  StatusBar,
-  View,
-} from "react-native";
-import SearchBar from "../components/SearchBar.js";
-import FloatingButton from "../components/FloatingButton.js";
-import CategoriesSection from "../components/CategoriesSection.js";
-import ListOverview from "../components/ListOverview.js";
-import { getLists } from "../database/getLists.js";
+import { useEffect, useState } from "react";
+import { SafeAreaView, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
+import FloatingButton from "../components/FloatingButton.js";
+import CategoriesSection from "../components/CategoriesSection.js";
+import EventsOverview from "../components/EventsOverview.js";
+import { getEvents } from "../database/getEvents.js";
+
 function HomeScreen() {
-  const [lists, setLists] = useState([]);
+  const [events, setEvents] = useState([]);
   const { colors } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getLists();
-      setLists(data);
+      const data = await getEvents();
+      setEvents(data);
     };
 
     fetchData();
@@ -31,17 +24,10 @@ function HomeScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar style="auto" />
       <CategoriesSection />
-      <ListOverview lists={lists} />
+      <EventsOverview events={events} maxItems={2} showSeeAll={true} />
       <FloatingButton />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  searchBarContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default HomeScreen;
