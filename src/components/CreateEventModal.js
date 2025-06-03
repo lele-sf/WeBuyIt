@@ -67,7 +67,7 @@ export default function CreateEventModal({
       //   }
 
       const placeholderSize = "300";
-      const imageUrl = `https://fakeimg.pl/${placeholderSize}/`;
+      const imageUrl = `https://placehold.co/${placeholderSize}.png`;
 
       await createEvent({
         title,
@@ -231,14 +231,12 @@ export default function CreateEventModal({
 
           <View style={styles.buttonRow}>
             <Button title="Cancelar" onPress={onClose} color="#999" />
-            <Gradient>
               <Button
                 title={isLoading ? "Salvando..." : "Criar"}
                 onPress={handleSubmit}
                 disabled={isLoading}
                 color={colors.primary}
               />
-            </Gradient>
           </View>
         </View>
       </View>
