@@ -1,16 +1,15 @@
-import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
 import Gradient from "./Gradient";
 
-const FloatingButton = ({}) => {
+const FloatingButton = ({ onPress }) => {
   const { colors } = useTheme();
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <Gradient>
         <Text style={[styles.buttonText, { color: colors.text }]}>
-          Criar uma nova lista
+          Criar Evento
         </Text>
       </Gradient>
     </TouchableOpacity>

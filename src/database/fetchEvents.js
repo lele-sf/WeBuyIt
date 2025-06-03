@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
-export const getEvents = async () => {
+export const fetchEvents = async () => {
   try {
     const eventsSnap = await getDocs(collection(db, "events"));
 
