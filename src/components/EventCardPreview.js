@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
-function EventCard({ event, onPress }) {
+function EventCardPreview({ event, onPress }) {
   const { colors } = useTheme();
   const { imageUrl, date, title, attendees, attendeesCount } = event;
 
@@ -51,7 +51,7 @@ function EventCard({ event, onPress }) {
   );
 }
 
-export default EventCard;
+export default EventCardPreview;
 
 const AVATAR_SIZE = 32;
 

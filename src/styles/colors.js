@@ -1,6 +1,7 @@
 export const LightColors = {
   // opções padrões de cores do react-navigation
     primary: "#5DCFAE",
+    secondary: "#DDEBE6",
     background: "#F4F7F9",
     card: "#FFFFFF",
     text: "#1C1C1E",
@@ -12,6 +13,7 @@ export const LightColors = {
   
   export const DarkColors = {
     primary: "#5DCFAE",
+    secondary: "#31333F",
     background:"#1b1c25",
     card: "#262834",
     text: "#E5E5E5",

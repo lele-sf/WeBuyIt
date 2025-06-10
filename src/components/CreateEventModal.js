@@ -29,6 +29,7 @@ export default function CreateEventModal({
 
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -75,10 +76,12 @@ export default function CreateEventModal({
         imageUrl,
         host,
         location,
+        description,
       });
 
       setTitle("");
       setLocation("");
+      setDescription("");
       setImageUri(null);
       onCreated();
       onClose();
@@ -100,9 +103,7 @@ export default function CreateEventModal({
       <View style={styles.backdrop}>
         <View style={[styles.modal, { backgroundColor: colors.card }]}>
           <Gradient style={{ marginBottom: 16 }}>
-            <Text style={styles.header}>
-              Criar Evento
-            </Text>
+            <Text style={styles.header}>Criar Evento</Text>
           </Gradient>
 
           {/* Título */}
@@ -111,11 +112,27 @@ export default function CreateEventModal({
               styles.input,
               { borderColor: colors.border, color: colors.text },
             ]}
+            multiline
+            maxLength={50}
             placeholder="Título"
             placeholderTextColor={`${colors.text}80`}
             value={title}
             onChangeText={setTitle}
           />
+
+          {/* Descrição */}
+          <TextInput
+            style={[
+              styles.input,
+              { borderColor: colors.border, color: colors.text },
+            ]}
+            multiline
+            placeholder="Descrição"
+            placeholderTextColor={`${colors.text}80`}
+            value={description}
+            onChangeText={setDescription}
+          />
+
           {/* Local */}
           <View
             style={[
@@ -125,11 +142,12 @@ export default function CreateEventModal({
           >
             <Feather name="map-pin" size={18} color={colors.text} />
             <TextInput
+              style={{ flex: 1, marginLeft: 8, color: colors.text }}
+              multiline
               placeholder="Local"
+              placeholderTextColor={`${colors.text}80`}
               value={location}
               onChangeText={setLocation}
-              style={{ flex: 1, marginLeft: 8, color: colors.text }}
-              placeholderTextColor={`${colors.text}80`}
             />
           </View>
 
@@ -231,12 +249,12 @@ export default function CreateEventModal({
 
           <View style={styles.buttonRow}>
             <Button title="Cancelar" onPress={onClose} color="#999" />
-              <Button
-                title={isLoading ? "Salvando..." : "Criar"}
-                onPress={handleSubmit}
-                disabled={isLoading}
-                color={colors.primary}
-              />
+            <Button
+              title={isLoading ? "Salvando..." : "Criar"}
+              onPress={handleSubmit}
+              disabled={isLoading}
+              color={colors.primary}
+            />
           </View>
         </View>
       </View>
