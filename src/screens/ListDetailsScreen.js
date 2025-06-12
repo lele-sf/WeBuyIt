@@ -4,7 +4,7 @@ import { useRoute, useTheme } from "@react-navigation/native";
 
 import ListDetails from "../components/ListDetails";
 import Gradient from "../components/Gradient";
-import { getItems } from "../database/getItems";
+import { fetchItems } from "../database/fetchItems";
 
 function ListScreen() {
   const route = useRoute();
@@ -14,7 +14,7 @@ function ListScreen() {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const items = await getItems(title);
+      const items = await fetchItems(title);
       setData(items);
     };
     fetchItems();

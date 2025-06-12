@@ -1,24 +1,22 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useColorScheme } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
-import { LightThemeCustom, DarkThemeCustom } from "../styles/theme";
 import HomeScreen from "../screens/HomeScreen";
 import AllEventsScreen from "../screens/AllEventsScreen";
 import HeaderList from "../components/HeaderList";
 import Header from "../components/Header";
+import EventDetailScreen from "../screens/EventDetailScreen";
 
 const Stack = createNativeStackNavigator();
+
 export default function HomeStack() {
-  const colorScheme = useColorScheme()
+  const { colors } = useTheme();
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor:
-            colorScheme === "dark"
-              ? DarkThemeCustom.colors.background
-              : LightThemeCustom.colors.background,
+          backgroundColor: colors.background,
         },
         headerTintColor: "#5DCFAE",
         headerShadowVisible: false,
@@ -37,6 +35,17 @@ export default function HomeStack() {
         options={{
           title: "",
           headerRight: () => <HeaderList />,
+        }}
+      />
+      <Stack.Screen
+        name="EventDetail"
+        component={EventDetailScreen}
+        options={{
+          headerTitle: "",
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: "transparent",
+          },
         }}
       />
     </Stack.Navigator>

@@ -1,7 +1,8 @@
 import { collection, addDoc, serverTimestamp, setDoc, doc } from "firebase/firestore";
 import { db } from "./firebaseConfig";
+import { createEventList } from "./eventLists";
 
-export const createEvent = async ({ title, date, imageUrl, host, location }) => {
+export const createEvent = async ({ title, date, imageUrl, host, location, description }) => {
   try {
     const docRef = await addDoc(collection(db, "events"), {
       title,
@@ -9,6 +10,7 @@ export const createEvent = async ({ title, date, imageUrl, host, location }) => 
       imageUrl,
       host,
       location,
+      description,
       attendeesCount: 1,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
@@ -26,6 +28,8 @@ export const createEvent = async ({ title, date, imageUrl, host, location }) => 
       doc(db, "events", docRef.id, "attendees", host.id),
       hostAttendee
     );
+    
+    await createEventList(docRef.id);
 
     return docRef.id;
   } catch (error) {

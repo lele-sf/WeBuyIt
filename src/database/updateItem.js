@@ -5,8 +5,8 @@ export const updateItem = async (listId, itemId, updatedData) => {
   try {
     const itemDocRef = doc(db, `Lists/${listId}/Items`, itemId);
     await updateDoc(itemDocRef, updatedData);
-    console.log(`Item ${itemId} atualizado com sucesso no Firestore.`);
+    console.log(` Item ${itemId} updated successfully in list ${listId}`);
 } catch (error) {
-    console.error(`Erro atualizando item ${itemId}:`, error);
+    console.error(`Error updating item ${itemId}:`, error);
   }
 };

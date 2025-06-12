@@ -1,7 +1,7 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
-export const getItems = async (listId) => {
+export const fetchItems = async (listId) => {
   try {
     const itemsCollection = collection(db, `Lists/${listId}/Items`);
     const querySnapshot = await getDocs(itemsCollection);
@@ -11,7 +11,7 @@ export const getItems = async (listId) => {
     }));
     return items;
   } catch (error) {
-    console.error("Error ao buscar items:", error);
+    console.error("Error fetching items:", error);
     return [];
   }
 };

@@ -8,7 +8,7 @@ import {
 import { useTheme, useNavigation } from "@react-navigation/native";
 
 import Gradient from "./Gradient";
-import EventCard from "./EventCardPreview";
+import EventCardPreview from "./EventCardPreview";
 
 function EventsOverview({
   events = [],
@@ -42,23 +42,37 @@ function EventsOverview({
       <FlatList
         data={displayEvents}
         keyExtractor={(evt) => evt.id.toString()}
-        renderItem={({ item: evt }) => (
-          <EventCard
-            event={{
-              imageUrl: evt.imageUrl || null,
-              date: evt.date.toDate
-                ? evt.date.toDate().toLocaleDateString("pt-BR", {
-                    day: "2-digit",
-                    month: "long",
-                  })
-                : evt.date,
-              title: evt.title,
-              attendees: evt.attendees || [],
-              attendeesCount: evt.attendeesCount,
-            }}
-            onPress={() => console.log("Abrir card evento", evt.id)}
-          />
-        )}
+        renderItem={({ item: evt }) => {
+          let formattedDate = evt.date;
+          if (evt.date && evt.date.toDate) {
+            const d = evt.date.toDate();
+            formattedDate =
+              d.toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })
+          }
+          return (
+            <EventCardPreview
+              event={{
+                imageUrl: evt.imageUrl || null,
+                date: formattedDate,
+                title: evt.title,
+                attendees: evt.attendees || [],
+                attendeesCount: evt.attendeesCount,
+              }}
+              onPress={() =>
+                navigation.navigate("EventDetail", {
+                  event: {
+                    ...evt,
+                    date: formattedDate,
+                  },
+                })
+              }
+            />
+          );
+        }}
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}
       />

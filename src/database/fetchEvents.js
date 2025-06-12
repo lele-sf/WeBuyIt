@@ -23,6 +23,8 @@ export const fetchEvents = async () => {
         const attendeesSnap = await getDocs(attendeesQuery);
 
         const attendees = attendeesSnap.docs.map((a) => ({
+          id: a.id,
+          name: a.data().name,
           imageUrl: a.data().imageUrl,
         }));
 
@@ -36,7 +38,7 @@ export const fetchEvents = async () => {
 
     return events;
   } catch (error) {
-    console.error("Erro ao buscar eventos:", error);
+    console.error("Error fetching events:", error);
     return [];
   }
 };
