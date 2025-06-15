@@ -4,8 +4,8 @@ import { useTheme } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
 import { Ionicons } from "@expo/vector-icons";
 
-import { updateItem } from "../database/updateItem";
-import Gradient from "./Gradient";
+import { updateItem } from "../../database/updateItem";
+import Gradient from "../layout/Gradient";
 
 function ListDetails({ data, listId, flatListMode = true }) {
   const { colors } = useTheme();

@@ -14,25 +14,26 @@ import { useTheme } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 
-import ListDetails from "../components/ListDetails";
+import ListDetails from "../components/events/ListDetails";
+import Gradient from "../components/layout/Gradient";
 import { fetchEventList, addItemToEventList } from "../database/eventLists";
-import Gradient from "../components/Gradient";
+import { formatFullDate, formatTime, formatEventDate } from "../utils/formatDates";
 
 export default function EventDetailScreen({ route }) {
-  const { event } = route.params;
-  const {
-    imageUrl,
-    title,
-    date,
-    location,
-    description,
-    attendees = [],
-  } = event;
-
   const { colors } = useTheme();
+  const { event } = route.params || {};
+
   const [loading, setLoading] = useState(true);
   const [listData, setListData] = useState({ listId: null, items: [] });
   const [newItemName, setNewItemName] = useState("");
+
+  if (!event) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ color: colors.text }}>Evento não encontrado</Text>
+      </View>
+    );
+  }
 
   useEffect(() => {
     const loadEventList = async () => {
@@ -67,13 +68,17 @@ export default function EventDetailScreen({ route }) {
     }
   };
 
+  const jsDate = formatEventDate(event.date);
+  const formattedDate = formatFullDate(event.date);
+  const formattedTime = event.hour || formatTime(jsDate);
+
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView>
         <ImageBackground
           source={
-            imageUrl
-              ? { uri: imageUrl }
+            event.imageUrl
+              ? { uri: event.imageUrl }
               : { uri: "https://placehold.co/400.jpg" }
           }
           style={styles.header}
@@ -81,10 +86,10 @@ export default function EventDetailScreen({ route }) {
         >
           <View style={styles.headerContent}>
             <Text style={[styles.title, { color: colors.primary }]}>
-              {title}
+              {event.title}
             </Text>
             <Text style={[styles.subTitle, { color: colors.primary }]}>
-              {date}
+              {formattedDate} às {formattedTime}
             </Text>
           </View>
         </ImageBackground>
@@ -109,7 +114,7 @@ export default function EventDetailScreen({ route }) {
                 />
                 <View style={{ marginLeft: 8, flex: 1 }}>
                   <Text style={[styles.cardText, { color: colors.text }]}>
-                    {location}
+                    {event.location}
                   </Text>
                 </View>
               </View>
@@ -139,7 +144,7 @@ export default function EventDetailScreen({ route }) {
                     { color: colors.text, marginLeft: 8 },
                   ]}
                 >
-                  {description}
+                  {event.description}
                 </Text>
               </View>
             </View>
@@ -222,11 +227,11 @@ export default function EventDetailScreen({ route }) {
             >
               <Text style={styles.cardHeader}>Confirmados</Text>
               <Text style={[styles.countText, { color: colors.text }]}>
-                {attendees.length} Pessoas
+                {event.attendees.length} Pessoas
               </Text>
             </View>
             <View style={styles.cardContent}>
-              {attendees.map((person, idx) => (
+              {event.attendees.map((person, idx) => (
                 <View key={person.id || idx} style={styles.row}>
                   <Image
                     source={{ uri: person.imageUrl }}
