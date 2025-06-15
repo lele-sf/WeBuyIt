@@ -2,10 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import { SafeAreaView, StatusBar } from "react-native";
 import { useTheme } from "@react-navigation/native";
 
-import FloatingButton from "../components/FloatingButton.js";
-import CategoriesSection from "../components/CategoriesSection.js";
-import EventsOverview from "../components/EventsOverview.js";
-import CreateEventModal from "../components/CreateEventModal.js";
+import FloatingButton from "../components/layout/FloatingButton.js";
+import CategoriesSection from "../components/home/CategoriesSection.js";
+import EventsOverview from "../components/events/EventsOverview.js";
+import CreateEventModal from "../components/events/CreateEventModal.js";
 import { fetchEvents } from "../database/fetchEvents.js";
 import { UserContext } from "../contexts/UserContext.js";
 

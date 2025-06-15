@@ -1,8 +1,7 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { useTheme } from "@react-navigation/native";
 
-import Gradient from "./Gradient";
+import Gradient from "../layout/Gradient";
 
 function CategoryBox({ title, count, iconName }) {
   const { colors } = useTheme();
