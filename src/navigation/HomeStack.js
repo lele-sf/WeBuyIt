@@ -3,9 +3,9 @@ import { useTheme } from "@react-navigation/native";
 
 import HomeScreen from "../screens/HomeScreen";
 import AllEventsScreen from "../screens/AllEventsScreen";
-import HeaderList from "../components/HeaderList";
-import Header from "../components/Header";
 import EventDetailScreen from "../screens/EventDetailScreen";
+import HeaderList from "../components/layout/HeaderList";
+import Header from "../components/layout/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,13 +40,14 @@ export default function HomeStack() {
       <Stack.Screen
         name="EventDetail"
         component={EventDetailScreen}
-        options={{
+        options={({ route }) => ({
           headerTitle: "",
           headerTransparent: true,
           headerStyle: {
             backgroundColor: "transparent",
           },
-        }}
+          title: route.params?.event?.title || 'Event Details'
+        })}
       />
     </Stack.Navigator>
   );

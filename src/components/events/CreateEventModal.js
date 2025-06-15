@@ -15,9 +15,10 @@ import { useTheme } from "@react-navigation/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { AntDesign, Feather } from "@expo/vector-icons";
 
-import Gradient from "./Gradient";
-import { pickImage, uploadImageAsync } from "../utils/imageUpload";
-import { createEvent } from "../database/createEvent";
+import Gradient from "../layout/Gradient";
+import { pickImage, uploadImageAsync } from "../../utils/imageUpload";
+import { formatShortDate, formatTime } from "../../utils/formatDates";
+import { createEvent } from "../../database/createEvent";
 
 export default function CreateEventModal({
   visible,
@@ -168,11 +169,7 @@ export default function CreateEventModal({
                   { color: colors.text, marginLeft: 8 },
                 ]}
               >
-                {date.toLocaleDateString("pt-BR", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
+                {formatShortDate(date)}
               </Text>
             </TouchableOpacity>
 
@@ -191,10 +188,7 @@ export default function CreateEventModal({
                   { color: colors.text, marginLeft: 8 },
                 ]}
               >
-                {time.toLocaleTimeString("pt-BR", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                {formatTime(time)}
               </Text>
             </TouchableOpacity>
           </View>

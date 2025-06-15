@@ -1,6 +1,5 @@
-import React from "react";
 import { View, StyleSheet } from "react-native";
-import CategoryBox from "../components/CategoryBox";
+import CategoryBox from "./CategoryBox";
 
 const categories = [
   { title: "Eventos chegando", count: '04'},

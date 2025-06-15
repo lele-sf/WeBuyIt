@@ -7,8 +7,9 @@ import {
 } from "react-native";
 import { useTheme, useNavigation } from "@react-navigation/native";
 
-import Gradient from "./Gradient";
+import Gradient from "../layout/Gradient";
 import EventCardPreview from "./EventCardPreview";
+import { formatShortDate } from "../../utils/formatDates";
 
 function EventsOverview({
   events = [],
@@ -43,16 +44,7 @@ function EventsOverview({
         data={displayEvents}
         keyExtractor={(evt) => evt.id.toString()}
         renderItem={({ item: evt }) => {
-          let formattedDate = evt.date;
-          if (evt.date && evt.date.toDate) {
-            const d = evt.date.toDate();
-            formattedDate =
-              d.toLocaleDateString("pt-BR", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })
-          }
+          const formattedDate = formatShortDate(evt.date, "pt-BR");
           return (
             <EventCardPreview
               event={{
