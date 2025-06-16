@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "react-native";
 
 import { LightThemeCustom, DarkThemeCustom } from "../styles/theme";
+import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import AllEventsScreen from "../screens/AllEventsScreen";
 import HeaderList from "../components/HeaderList";
