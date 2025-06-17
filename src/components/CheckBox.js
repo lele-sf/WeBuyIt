@@ -1,32 +1,28 @@
-// components/CustomCheckbox.js
-import React from "react";
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useTheme } from "@react-navigation/native";
 
-export default function CheckBox({ label, value, onChange }) {
+function Checkbox({ checked, onToggle }) {
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity
-      onPress={() => onChange(!value)}
-      style={styles.container}
+      onPress={onToggle}
+      style={{
+        width: 24,
+        height: 24,
+        borderWidth: 2,
+        borderColor: checked ? colors.primary : "#aaa",
+        borderRadius: 4,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <Ionicons
-        name={value ? "checkbox-outline" : "square-outline"}
-        size={24}
-        color={value ? "#00e4c5" : "#aaa"}
-      />
-      <Text style={styles.label}>{label}</Text>
+      {checked && (
+        <Gradient><Ionicons name="checkmark" size={16}/></Gradient>
+      )}
     </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  label: {
-    fontSize: 14,
-    marginLeft: 8,
-    color: "#fff",
-  },
-});
+export default Checkbox;

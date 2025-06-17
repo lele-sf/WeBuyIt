@@ -1,114 +1,146 @@
-import { View, Text, StyleSheet, TouchableOpacity, } from "react-native";
-import { useState } from "react";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { useTheme } from "@react-navigation/native";
-import CheckBox from "../components/CheckBox";
-import Gradient from "../components/Gradient";
-import LoginInput from "../components/LoginInput";
-import GradientButton from "../components/GradientButton";
+import Checkbox from "../components/CheckBox";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import Gradient from "../components/Gradient";
+import GradientButton from "../components/GradientButton";
+import InputInfo from "../components/InputInfo";
 
 export default function LoginScreen() {
   const { colors } = useTheme();
-  const [remember, setRemember] = useState(false);
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Gradient style={styles.logo}>
-        <Text style={styles.logoText}>WeBuyIt</Text>
-      </Gradient>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={styles.wrapper}>
+        <Gradient style={styles.logoText}>WeBuyIt</Gradient>
 
-      <LoginInput
-        placeholder="Digite seu login"
-        icon="person"
-        value={user}
-        onChangeText={setUser}
-      />
+        <View style={styles.inputWrapper}>
+          <InputInfo
+            label="Seu usuário"
+            placeholder="Digite seu login"
+            iconName="person-outline"
+            value={username}
+            onChangeText={setUsername}
+          />
+        </View>
 
-      <LoginInput
-        placeholder="Digite sua senha"
-        icon="lock-closed"
-        isPassword
-        value={password}
-        onChangeText={setPassword}
-      />
+        <View style={styles.inputWrapper}>
+          <InputInfo
+            label="Sua senha"
+            placeholder="Digite sua senha"
+            iconName="lock-closed-outline"
+            secure={true}
+            value={password}
+            onChangeText={setPassword}
+          />
 
-      <View style={styles.row}>
-        <CheckBox
-          label="Lembrar de mim"
-          value={remember}
-          onChange={setRemember}
+          <TouchableOpacity>
+            <Text style={[styles.forgotText, { color: colors.text }]}>Esqueci minha senha</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.checkboxRow}>
+          <Checkbox
+            value={rememberMe}
+            onValueChange={setRememberMe}
+            tintColors={{ true: colors.primary, false: '#aaa' }}
+          />
+          <Text style={[styles.rememberText, { color: colors.text }]}>Lembrar de mim</Text>
+        </View>
+
+        import Ionicons from "@expo/vector-icons/Ionicons";
+
+        import Ionicons from "@expo/vector-icons/Ionicons";
+
+        <GradientButton
+          title="ACESSAR"
+          onPress={() => { }}
+          iconRight={<Ionicons name="log-in-outline" size={20} color={colors.card} />}
         />
-        <TouchableOpacity>
-          <Text style={[styles.forgot, { color: colors.text }]}>Esqueci minha senha</Text>
+        <TouchableOpacity style={styles.createAccountButton}>
+          <Gradient style={styles.createAccountText}>Criar conta <Ionicons name="person-add" size={16} /></Gradient>
         </TouchableOpacity>
       </View>
-
-      <GradientButton
-        title="ACESSAR"
-        onPress={() => console.log("Login")}
-        iconRight={<Ionicons name="log-in" size={20} color="white" style={{ marginLeft: 8 }} />}
-      />
-
-      <TouchableOpacity style={styles.createAccount}>
-        <Gradient style={styles.createAccountBtn}>
-          <Text style={styles.createText}>Criar conta</Text>
-          <Ionicons name="person-add" size={16} color="white" style={{ marginLeft: 6 }} />
-        </Gradient>
-      </TouchableOpacity>
-    </View>
+      <BottomDecoration />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 32,
-    justifyContent: "center",
-    backgroundColor: "#0f0f0f",
   },
-  logo: {
-    alignSelf: "center",
-    marginBottom: 40,
+  wrapper: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
   },
   logoText: {
-    fontFamily: "maven_bold",
-    fontSize: 32,
+    fontFamily: "maven_semibold",
+    fontSize: 40,
+    marginBottom: 48,
     letterSpacing: 4,
-    color: "white",
   },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 16,
+  inputWrapper: {
+    width: "100%",
+    marginBottom: 20,
   },
-  checkbox: {
+  inputLabelRow: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 4,
   },
-  checkLabel: {
-    fontSize: 14,
-    marginLeft: 8,
-  },
-  forgot: {
-    fontSize: 14,
-    textDecorationLine: "underline",
-  },
-  createAccount: {
-    marginTop: 20,
-  },
-  createAccountBtn: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 10,
-    borderRadius: 8,
-  },
-  createText: {
-    color: "white",
+  label: {
     fontSize: 14,
     fontFamily: "maven_medium",
+  },
+  input: {
+    borderBottomWidth: 1,
+    fontSize: 16,
+    paddingVertical: 8,
+    fontFamily: "maven_regular",
+  },
+  passwordRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  forgotText: {
+    fontSize: 12,
+    fontFamily: "maven_regular",
+    marginTop: 4,
+    alignSelf: "flex-end",
+  },
+  checkboxRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+    alignSelf: "flex-start",
+  },
+  rememberText: {
+    fontSize: 14,
+    fontFamily: "maven_regular",
+    marginLeft: 8,
+  },
+  createAccountButton: {
+    marginTop: 16,
+  },
+  createAccountText: {
+    fontSize: 16,
+    fontFamily: "maven_medium",
+    flexDirection: "row",
+    alignItems: "center",
   },
 });

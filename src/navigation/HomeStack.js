@@ -26,6 +26,13 @@ export default function HomeStack() {
       }}
     >
       <Stack.Screen
+        name="LoginPage"
+        component={LoginScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="HomeMain"
         component={HomeScreen}
         options={{
