@@ -56,10 +56,7 @@ function EventsOverview({
               }}
               onPress={() =>
                 navigation.navigate("EventDetail", {
-                  event: {
-                    ...evt,
-                    date: formattedDate,
-                  },
+                  event: evt,
                 })
               }
             />

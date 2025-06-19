@@ -15,11 +15,13 @@ export const formatTimestamp = (timestamp, locale = "pt-BR") => {
 export const formatEventDate = (date) => {
   if (!date) return new Date();
 
-  return date.toDate
-    ? date.toDate()
-    : date.seconds
-    ? new Date(date.seconds * 1000)
-    : new Date(date);
+  if (date.toDate && typeof date.toDate === "function") {
+    return date.toDate();
+  } else if (date.seconds) {
+    return new Date(date.seconds * 1000);
+  } else {
+    return new Date(date);
+  }
 };
 
 export const formatFullDate = (date) => {
