@@ -1,9 +1,13 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-
+import {
+  initializeAuth,
+  getReactNativePersistence,
+} from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
 
-console.log("🔍 ENV VARS (dentro do app):", Constants.expoConfig.extra);
 const firebaseConfig = {
   apiKey: Constants.expoConfig.extra.FIREBASE_API_KEY,
   authDomain: Constants.expoConfig.extra.FIREBASE_AUTH_DOMAIN,
@@ -13,7 +17,10 @@ const firebaseConfig = {
   appId: Constants.expoConfig.extra.FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+
+const auth = getAuth(app); 
+
 const db = getFirestore(app);
 
-export { db };
+export { app, db, auth };

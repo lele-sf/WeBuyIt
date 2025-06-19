@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "react-native";
 
 import { LightThemeCustom, DarkThemeCustom } from "../styles/theme";
-import LoginScreen from "../screens/LoginScreen";
+import LoginScreen from "../screens/loginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import AllEventsScreen from "../screens/AllEventsScreen";
 import HeaderList from "../components/HeaderList";
@@ -25,13 +25,6 @@ export default function HomeStack() {
         headerShadowVisible: false,
       }}
     >
-      <Stack.Screen
-        name="LoginPage"
-        component={LoginScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
       <Stack.Screen
         name="HomeMain"
         component={HomeScreen}

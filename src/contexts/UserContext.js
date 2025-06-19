@@ -1,15 +1,27 @@
-import { createContext } from 'react';
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../database/firebaseConfig";
 
-export const UserContext = createContext({
-  user: { id: 'demoUserId', name: 'Demo User', imageUrl: 'https://fakeimg.pl/200/' }
-});
+const AuthContext = createContext({ user: null });
 
-// usuario fictício para teste
-export function UserProvider({ children }) {
-  const demoUser = { id: 'u12345', name: 'User Demo', imageUrl: 'https://fakeimg.pl/200/' };
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loadingAuth, setLoadingAuth] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoadingAuth(false);
+    });
+
+    return () => unsubscribe(); // limpa o listener no unmount
+  }, []);
+
   return (
-    <UserContext.Provider value={{ user: demoUser }}>
+    <AuthContext.Provider value={{ user, loadingAuth }}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
-}
+};
+
+export const useAuth = () => useContext(AuthContext);

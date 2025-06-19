@@ -3,23 +3,47 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
 } from "react-native";
-import { useTheme } from "@react-navigation/native";
-import Checkbox from "../components/CheckBox";
+import { useTheme, useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+
+import { auth } from "../database/firebaseConfig"; 
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+import Checkbox from "../components/CheckBox";
 import Gradient from "../components/Gradient";
 import GradientButton from "../components/GradientButton";
 import InputInfo from "../components/InputInfo";
 
 export default function LoginScreen() {
   const { colors } = useTheme();
-  const [username, setUsername] = useState("");
+  const navigation = useNavigation();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Erro", "Preencha todos os campos.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await signInWithEmailAndPassword(auth, email, password);
+      navigation.replace("HomeMain");
+    } catch (error) {
+      console.error("Erro no login:", error);
+      Alert.alert("Erro ao entrar", "Verifique seu e-mail e senha.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
@@ -28,11 +52,11 @@ export default function LoginScreen() {
 
         <View style={styles.inputWrapper}>
           <InputInfo
-            label="Seu usuário"
-            placeholder="Digite seu login"
+            label="Seu e-mail"
+            placeholder="Digite seu e-mail"
             iconName="person-outline"
-            value={username}
-            onChangeText={setUsername}
+            value={email}
+            onChangeText={setEmail}
           />
         </View>
 
@@ -47,7 +71,9 @@ export default function LoginScreen() {
           />
 
           <TouchableOpacity>
-            <Text style={[styles.forgotText, { color: colors.text }]}>Esqueci minha senha</Text>
+            <Text style={[styles.forgotText, { color: colors.text }]}>
+              Esqueci minha senha
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -57,23 +83,27 @@ export default function LoginScreen() {
             onValueChange={setRememberMe}
             tintColors={{ true: colors.primary, false: '#aaa' }}
           />
-          <Text style={[styles.rememberText, { color: colors.text }]}>Lembrar de mim</Text>
+          <Text style={[styles.rememberText, { color: colors.text }]}>
+            Lembrar de mim
+          </Text>
         </View>
 
-        import Ionicons from "@expo/vector-icons/Ionicons";
-
-        import Ionicons from "@expo/vector-icons/Ionicons";
-
         <GradientButton
-          title="ACESSAR"
-          onPress={() => { }}
+          title={loading ? "Carregando..." : "ACESSAR"}
+          onPress={handleLogin}
+          disabled={loading}
           iconRight={<Ionicons name="log-in-outline" size={20} color={colors.card} />}
         />
-        <TouchableOpacity style={styles.createAccountButton}>
-          <Gradient style={styles.createAccountText}>Criar conta <Ionicons name="person-add" size={16} /></Gradient>
+
+        <TouchableOpacity
+          style={styles.createAccountButton}
+          onPress={() => navigation.navigate("Register")}
+        >
+          <Gradient style={styles.createAccountText}>
+            Criar conta <Ionicons name="person-add" size={16} />
+          </Gradient>
         </TouchableOpacity>
       </View>
-      <BottomDecoration />
     </SafeAreaView>
   );
 }
