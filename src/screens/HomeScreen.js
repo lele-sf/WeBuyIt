@@ -7,13 +7,13 @@ import CategoriesSection from "../components/home/CategoriesSection.js";
 import EventsOverview from "../components/events/EventsOverview.js";
 import CreateEventModal from "../components/events/CreateEventModal.js";
 import { fetchEvents } from "../database/fetchEvents.js";
-import { UserContext } from "../contexts/UserContext.js";
+import { AuthContext } from "../contexts/AuthContext.js";
 
 function HomeScreen() {
   const [events, setEvents] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const { colors } = useTheme();
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   console.log("Usuário atual:", user);
 
   useEffect(() => {

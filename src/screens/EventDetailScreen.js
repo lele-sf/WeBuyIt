@@ -284,6 +284,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 12,
     marginBottom: 16,
+    paddingHorizontal: 4,
     overflow: "hidden",
     padding: 0,
   },
