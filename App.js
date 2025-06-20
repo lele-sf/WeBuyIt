@@ -1,6 +1,7 @@
 import { useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
 
 import { LightThemeCustom, DarkThemeCustom } from "./src/styles/theme.js";
 import useCustomFonts from "./src/hooks/useFonts.js";
@@ -21,6 +22,10 @@ export default function App() {
   return (
     // aqui é usada a prop theme para definir o tema global do app
     <UserProvider>
+      <StatusBar 
+        style={colorScheme === "dark" ? "light" : "dark"}
+        translucent={true}
+      />
       <NavigationContainer
         theme={colorScheme === "dark" ? DarkThemeCustom : LightThemeCustom}
       >
