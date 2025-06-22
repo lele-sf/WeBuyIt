@@ -20,7 +20,7 @@ import { CommonActions } from "@react-navigation/native";
 import EventItem from "../components/calendar/EventItem";
 import CreateEventModal from "../components/events/CreateEventModal";
 import { useEvents } from "../hooks/useEvents";
-import { UserContext } from "../contexts/UserContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 const TODAY = new Date().toISOString().split("T")[0];
 const LIST_ITEM_HEIGHT = 80;
@@ -28,7 +28,7 @@ const LIST_ITEM_HEIGHT = 80;
 export default function CalendarScreen() {
   const { colors } = useTheme();
   const navigation = useNavigation();
-  const { user } = useContext(UserContext);
+  const { user } = useContext(AuthContext);
   const [showAddModal, setShowAddModal] = useState(false);
   const { items, isLoading, refresh } = useEvents();
 
