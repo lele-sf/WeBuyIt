@@ -22,7 +22,12 @@ WeBuyIt é um aplicativo mobile de lista de compras desenvolvido como projeto pa
 3. Execute o aplicativo com `npm start` ou `expo start` (caso utilize Expo)
 
 ## 📱 Versão para Download
-- [Download APK WeBuyIt](https://expo.dev/accounts/lele_sf/projects/WeBuyIt/builds/71ed1ee6-37d5-4fbd-8851-5a34549454d0)
+- [Download APK WeBuyIt](https://expo.dev/accounts/lele_sf/projects/WeBuyIt/builds/b26c6a4c-af98-4630-87a0-821e6bceb736)
+
+### Como fazer login
+Para testar o aplicativo sem precisar criar uma conta, use:
+- Email: `demo`
+- Senha: `demo`
 
 ## 👥 Autores
 - [Letícia Fernandes](https://github.com/lele-sf)
