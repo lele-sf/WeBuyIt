@@ -28,7 +28,8 @@ const AppNavigator = () => {
   }
 
   return (
-    <>
+    // aqui é usada a prop theme para definir o tema global do app
+    <UserProvider>
       <StatusBar
         style={colorScheme === "dark" ? "light" : "dark"}
         translucent={true}
